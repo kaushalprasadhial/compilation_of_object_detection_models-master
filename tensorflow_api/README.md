@@ -178,8 +178,7 @@ TensorFlow needs hundreds of images of an object to train a good detection class
   <img src="doc/collage.jpg">
 </p>
 
-You can use your phone to take pictures of the objects or download images of the objects from Google Image Search. I recommend having at least 200 pictures overall. I used 311 pictures to train my card detector.
-
+You can use your phone to take pictures of the objects or download images of the objects from Google Image Search. Having at least 200 pictures overall is recommend.
 Make sure the images aren’t too large. They should be less than 200KB each, and their resolution shouldn’t be more than 720x1280. The larger the images are, the longer it will take to train the classifier. You can use the resizer.py script in this repository to reduce the size of the images.
 
 After you have all the pictures you need, move 20% of them to the \object_detection\images\test directory, and 80% of them to the \object_detection\images\train directory. Make sure there are a variety of pictures in both the \test and \train directories.
