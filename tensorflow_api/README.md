@@ -174,8 +174,6 @@ Now that the TensorFlow Object Detection API is all set up and ready to go, we n
 #### 3a. Gather Pictures
 TensorFlow needs hundreds of images of an object to train a good detection classifier. To train a robust classifier, the training images should have random objects in the image along with the desired objects, and should have a variety of backgrounds and lighting conditions. There should be some images where the desired object is partially obscured, overlapped with something else, or only halfway in the picture. 
 
-For my Pinochle Card Detection classifier, I have six different objects I want to detect (the card ranks nine, ten, jack, queen, king, and ace – I am not trying to detect suit, just rank). I used my iPhone to take about 40 pictures of each card on its own, with various other non-desired objects in the pictures. Then, I took about another 100 pictures with multiple cards in the picture. I know I want to be able to detect the cards when they’re overlapping, so I made sure to have the cards be overlapped in many images.
-
 <p align="center">
   <img src="doc/collage.jpg">
 </p>
@@ -312,7 +310,7 @@ Navigate to C:\tensorflow1\models\research\object_detection\samples\configs and 
 
 Make the following changes to the faster_rcnn_inception_v2_pets.config file. Note: The paths must be entered with single forward slashes (NOT backslashes), or TensorFlow will give a file path error when trying to train the model! Also, the paths must be in double quotation marks ( " ), not single quotation marks ( ' ).
 
-- Line 9. Change num_classes to the number of different objects you want the classifier to detect. For the above basketball, shirt, and shoe detector, it would be num_classes : 3 .
+- Line 9. Change num_classes to the number of different objects you want the classifier to detect.
 - Line 106. Change fine_tune_checkpoint to:
   - fine_tune_checkpoint : "C:/tensorflow1/models/research/object_detection/faster_rcnn_inception_v2_coco_2018_01_28/model.ckpt"
 
@@ -329,9 +327,6 @@ Make the following changes to the faster_rcnn_inception_v2_pets.config file. Not
 Save the file after the changes have been made. That’s it! The training job is all configured and ready to go!
 
 ### 6. Run the Training
-**UPDATE 9/26/18:** 
-*As of version 1.9, TensorFlow has deprecated the "train.py" file and replaced it with "model_main.py" file. I haven't been able to get model_main.py to work correctly yet (I run in to errors related to pycocotools). Fortunately, the train.py file is still available in the /object_detection/legacy folder. Simply move train.py from /object_detection/legacy into the /object_detection folder and then continue following the steps below.*
-
 Here we go! From the \object_detection directory, issue the following command to begin training:
 ```
 python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
@@ -364,9 +359,9 @@ python export_inference_graph.py --input_type image_tensor --pipeline_config_pat
 This creates a frozen_inference_graph.pb file in the \object_detection\inference_graph folder. The .pb file contains the object detection classifier.
 
 ### 8. Use Your Newly Trained Object Detection Classifier!
-The object detection classifier is all ready to go! I’ve written Python scripts to test it out on an image, video, or webcam feed.
+The object detection classifier is all ready to go! There are Python scripts to test it out on an image, video, or webcam feed.
 
-Before running the Python scripts, you need to modify the NUM_CLASSES variable in the script to equal the number of classes you want to detect. (For my Pinochle Card Detector, there are six cards I want to detect, so NUM_CLASSES = 6.)
+Before running the Python scripts, you need to modify the NUM_CLASSES variable in the script to equal the number of classes you want to detect.
 
 To test your object detector, move a picture of the object or objects into the \object_detection folder, and change the IMAGE_NAME variable in the Object_detection_image.py to match the file name of the picture. Alternatively, you can use a video of the objects (using Object_detection_video.py), or just plug in a USB webcam and point it at the objects (using Object_detection_webcam.py).
 
@@ -374,11 +369,7 @@ To run any of the scripts, type “idle” in the Anaconda Command Prompt (with 
 
 If everything is working properly, the object detector will initialize for about 10 seconds and then display a window showing any objects it’s detected in the image!
 
-<p align="center">
-  <img src="doc/detector2.jpg">
-</p>
-
-If you encounter errors, please check out the Appendix: it has a list of errors that I ran in to while setting up my object detection classifier. You can also trying Googling the error. There is usually useful information on Stack Exchange or in TensorFlow’s Issues on GitHub.
+If you encounter errors, please check out the Appendix: it has a list of errors you may face while setting up my object detection classifier. You can also trying Googling the error. There is usually useful information on Stack Exchange or in TensorFlow’s Issues on GitHub.
 
 ## Appendix: Common Errors
 It appears that the TensorFlow Object Detection API was developed on a Linux-based operating system, and most of the directions given by the documentation are for a Linux OS. Trying to get a Linux-developed software library to work on Windows can be challenging. There are many little snags that I ran in to while trying to set up tensorflow-gpu to train an object detection classifier on Windows 10. This Appendix is a list of errors I ran in to, and their resolutions.
