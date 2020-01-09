@@ -5,7 +5,7 @@ https://pjreddie.com/media/files/papers/YOLOv3.pdf.
 ## Collect and annotate images
 The steps to annotate images using LabelImg:
 
-  1 Create a folder contains images files and name it "images".  
+  1 Create a folder contains images files and name it "images" inside "darkflow" directory.  
   2 Create a folder contains annotations files and name it "annotations".  
   3 Open LabelImg application.  
   4 Click on “Open Dir” and then choose the Images folder.  
@@ -16,18 +16,23 @@ The steps to annotate images using LabelImg:
   9 Click ”CTRL+S” to save the annotation to the XML file in the annotations folder.  
   10 Repeat steps 8 to 10 till you complete annotating all the images.  
   
+*Although you can use any YOLO version you want, the steps below assume you want to use tiny YOLO and your dataset has 3 classes*
+  
 ## Download Darkflow
-Download [darkflow](https://github.com/llSourcell/YOLO_Object_Detection) repository from github
+Download [darkflow](https://github.com/llSourcell/YOLO_Object_Detection) repository from github.  
 Download Yolo weights and configuration file form [this link](https://pjreddie.com/darknet/yolo/)
-you will need to modify the YOLOv3 tiny model (yolov3-tiny.cfg) to train our custom detector. This modification includes:
+
+## Make changes
+you will need to modify the YOLOv3 tiny model (yolov3-tiny.cfg) to train our custom detector.
+
+This modification includes:
 
   * Uncomment the lines 5,6, and 7 and change the training batch to 64 and subdivisions to 2.  
-  * Change the number of filters for convolutional layer "[convolution]" just before every yolo output "[yolo]" such that the number of       filters= #anchors x (5 + #ofclasses)= 3x(5+1)= 18. The number 5 is the count of parameters center_x, center_y, width, height, and objectness Score. So, change the lines 127 and 171 to "filters=18".  
-  * For every yolo layer [yolo] change the number of classes to 1 as in lines 135 and 177.
+  * Change the number of filters for convolutional layer "[convolution]" just before every yolo output "[yolo]" such that the number of       filters= #anchors x (5 + #ofclasses)= 3x(5+3)= 18. The number 5 is the count of parameters center_x, center_y, width, height, and objectness Score. So, change the lines 127 and 171 to "filters=18".  
+  * For every yolo layer [yolo] change the number of classes to 3 as in lines 135 and 177.
 
 ## Training on your own dataset
-*The steps below assume we want to use tiny YOLO and your dataset has 3 classes*
-
+steps to train YOLO on your custom dataset
   1. Create a copy of the configuration file `tiny-yolo-voc.cfg` and rename it according to your preference `tiny-yolo-voc-3c.cfg` (It is crucial that you leave the original `tiny-yolo-voc.cfg` file unchanged, see below for explanation).
 
   2. In `tiny-yolo-voc-3c.cfg`, change classes in the [region] layer (the last layer) to the number of classes you are going to train for. In our case, classes are set to 3.
