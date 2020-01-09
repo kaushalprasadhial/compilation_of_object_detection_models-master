@@ -174,10 +174,6 @@ Now that the TensorFlow Object Detection API is all set up and ready to go, we n
 #### 3a. Gather Pictures
 TensorFlow needs hundreds of images of an object to train a good detection classifier. To train a robust classifier, the training images should have random objects in the image along with the desired objects, and should have a variety of backgrounds and lighting conditions. There should be some images where the desired object is partially obscured, overlapped with something else, or only halfway in the picture. 
 
-<p align="center">
-  <img src="doc/collage.jpg">
-</p>
-
 You can use your phone to take pictures of the objects or download images of the objects from Google Image Search. Having at least 200 pictures overall is recommend.
 Make sure the images aren’t too large. They should be less than 200KB each, and their resolution shouldn’t be more than 720x1280. The larger the images are, the longer it will take to train the classifier. You can use the resizer.py script in this repository to reduce the size of the images.
 
