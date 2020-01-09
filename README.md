@@ -5,12 +5,12 @@ This repository contains the list of some of the famous object detection models 
 #### SSD: Single Shot MultiBox Detector
 
 ## 1> TensorFlow object detection API  
-  Using this API we can train and test
+Using this API we can train and test
   Faster R-CNN
   SSD
 tutorial for TensorFlow object detection API is inside `tensorflow_api` directiory
+
 ## 2> Darkflow  
-  Using DarkFlow you can train 
-  YOLO
+Using DarkFlow you can train and test YOLO. Tutorial for Darkflow is inside `Darkflow` directory
   
  
