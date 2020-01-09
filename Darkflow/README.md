@@ -91,13 +91,13 @@ steps to train YOLO on your custom dataset
 For a demo that entirely runs on the CPU:
 
 ```bash
-flow --model cfg/yolo-new.cfg --load bin/yolo-new.weights --demo videofile.avi
+python flow --model cfg/yolo-new.cfg --load bin/yolo-new.weights --demo videofile.avi
 ```
 
 For a demo that runs 100% on the GPU:
 
 ```bash
-flow --model cfg/yolo-new.cfg --load bin/yolo-new.weights --demo videofile.avi --gpu 1.0
+python flow --model cfg/yolo-new.cfg --load bin/yolo-new.weights --demo videofile.avi --gpu 1.0
 ```
 
 To use your webcam/camera, simply replace `videofile.avi` with keyword `camera`.
