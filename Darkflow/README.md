@@ -87,7 +87,9 @@ steps to train YOLO on your custom dataset
     When darkflow sees you are loading `tiny-yolo-voc.weights` it will look for `tiny-yolo-voc.cfg` in your cfg/ folder and compare that configuration file to the new one you have set with `--model cfg/tiny-yolo-voc-3c.cfg`. In this case, every layer will have the same exact number of weights except for the last two, so it will load the weights into all layers up to the last two because they now contain different number of weights.
     
 # for training
+```bash
 python flow --model cfg/yolov2.cfg --load weight/yolov2.weights --train --annotation annotation --dataset train --batch 1
+```
     
 # AssertionError: expect 202417260 bytes, found 203934260
 Simple way to solve this is to edit self.offset value in loader.py present at darkflow/darkflow/utils/updated self.offset = old_offset_value + (found_value - expected_value)
