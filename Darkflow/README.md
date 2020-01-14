@@ -123,7 +123,7 @@ Training is simple as you only have to add option `--train`. Training set and an
 
 ```bash
 # Initialize yolo-new from yolo-tiny, then train the net on 100% GPU:
-flow --model cfg/yolo-new.cfg --load bin/tiny-yolo.weights --train --gpu 1.0
+flow --model cfg/yolo-new.cfg --load bin/tiny-yolo.weights --train --gpu 1.0 --batch 1
 
 # Completely initialize yolo-new and train it with ADAM optimizer
 flow --model cfg/yolo-new.cfg --train --trainer adam
