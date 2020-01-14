@@ -20,6 +20,7 @@ The steps to annotate images using LabelImg:
   
 ## Download Darkflow
 Download [darkflow](https://github.com/llSourcell/YOLO_Object_Detection) repository from github.  
+https://github.com/thtrieu/darkflow
 Download Yolo weights and configuration file form [this link](https://pjreddie.com/darknet/yolo/)
 
 ## Make changes
