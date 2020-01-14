@@ -19,9 +19,27 @@ The steps to annotate images using LabelImg:
 *Although you can use any YOLO version you want, the steps below assume you want to use tiny YOLO and your dataset has 3 classes*
   
 ## Download Darkflow
-Download [darkflow](https://github.com/llSourcell/YOLO_Object_Detection) repository from github.  
-https://github.com/thtrieu/darkflow
-Download Yolo weights and configuration file form [this link](https://pjreddie.com/darknet/yolo/)
+Download or clone [darkflow](https://github.com/thtrieu/darkflow) repository from github.  
+Download Yolo weights and configuration file form [this link](https://pjreddie.com/darknet/yolo/).
+Now put Yolo weights and configuration inside the downloaded or cloned folder.
+
+## Getting started
+You can choose one of the following three ways to get started with darkflow.
+
+Just build the Cython extensions in place. NOTE: If installing this way you will have to use ./flow in the cloned darkflow directory instead of flow as darkflow is not installed globally.
+```bash
+python3 setup.py build_ext --inplace
+```
+
+Let pip install darkflow globally in dev mode (still globally accessible, but changes to the code immediately take effect)
+```bash
+pip install -e .
+```
+
+Install with pip globally
+```bash
+pip install .
+```
 
 ## Make changes
 you will need to modify the YOLOv3 tiny model (yolov3-tiny.cfg) to train our custom detector.
